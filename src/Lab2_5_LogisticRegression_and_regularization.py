@@ -1,3 +1,5 @@
+import numpy as np
+
 class LogisticRegressor:
     def __init__(self):
         """
@@ -262,9 +264,8 @@ class LogisticRegressor:
         - The computed loss value as a scalar.
         """
 
-        # TODO: Implement the loss function (log-likelihood)
         m = y.shape[0]  # Number of examples
-        loss = None
+        loss = -(1/m) * sum(y * np.log(y_hat) + (1 - y) * np.log(1 - y_hat))
         return loss
 
     @staticmethod
@@ -281,8 +282,5 @@ class LogisticRegressor:
         Returns:
         - The sigmoid of z.
         """
-
-        # TODO: Implement the sigmoid function to convert the logits into probabilities
-        sigmoid_value = None
-
+        sigmoid_value = 1 / (1 + np.exp(-z))
         return sigmoid_value
